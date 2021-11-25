@@ -9,6 +9,7 @@ const Form = () => {
     const [password, setPassword] = useState("")
     const [isPending, setIsPending] = useState(false);
     const [passwordShown, setPasswordShown] = useState(false);
+    const [error, setError] = useState(null);
     const [value, setValue] = useState("")
 
     const togglePasswordVisiblity = () => {
@@ -25,20 +26,28 @@ const Form = () => {
             method: 'POST',
             headers: { "Content-Type" : "application/json"},
             body: JSON.stringify(form)
-        }).then((res) => res.json())
-        .then(res => {
+        }).then((res) => {
+            console.log(res)
+            if(!res.ok) {
+                throw Error('Could not fetch the data for that resource');
+            }
+            return res.json();     
+        }).then(res => {
             console.log(res)
             setValue(res.message)
+            setError(false)
+            setIsPending(false);
         }).catch(e => {
             console.log(e)
-        }).finally(() => {
+            setValue('Login Gagal')
+            setError(true)
             setIsPending(false);
         })
     };
 
     return (
         <div className="form">
-            <p>{value}</p>
+            { error ? <p className="value error-color">{value} </p> : <p className="value success-color"> {value} </p>}
             <h2>Login</h2>
             <form onSubmit={handleSubmit}>
                 <label>Username</label>

@@ -68,3 +68,11 @@ i:hover {
   color: #8f00ff;
   cursor: pointer;
 }
+
+.error-color {
+  color: red;
+}
+
+.success-color {
+  color: green;
+}

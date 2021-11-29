@@ -89,9 +89,9 @@
 
 button:disabled,
 button[disabled] {
-  border: 1px solid #999999;
-  background-color: #cccccc;
-  color: #666666;
+  border: 1px solid rgba(255, 255, 255, 0.651);
+  background-color: #6600b43a;
+  color: rgba(255, 255, 255, 0.651);
 }
 
 .password {

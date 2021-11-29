@@ -12,6 +12,7 @@ const Form = (props) => {
   const [error, setError] = useState(null);
   const [value, setValue] = useState("");
   const history = useHistory();
+
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   };

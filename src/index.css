@@ -8,6 +8,33 @@
   box-sizing: border-box;
 }
 
+.navbar {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.navbar h1 {
+  color: #8f00ff;
+}
+
+.navbar .links {
+  margin-left: auto;
+}
+
+.navbar a {
+  margin-left: 16px;
+  text-decoration: none;
+  padding: 6px;
+}
+
+.navbar a:hover {
+  color: #8f00ff;
+}
+
 /* Form */
 .form {
   max-width: 400px;
@@ -16,13 +43,15 @@
 }
 
 .form h2 {
+  margin-top: 10px;
+  margin-bottom: 30px;
   font-size: 20px;
   text-align: left;
-  margin-top: 30px;
-  margin-bottom: 30px;
 }
 
 .form p {
+  margin-top: 20px;
+  font-size: 14px;
   font-weight: bold;
   text-align: left;
 }
@@ -86,4 +115,8 @@ i:hover {
 
 .success-color {
   color: green;
+}
+
+.border-error {
+  border: 1px solid red !important;
 }

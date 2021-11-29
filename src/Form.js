@@ -28,19 +28,14 @@ const Form = () => {
             body: JSON.stringify(form)
         }).then((res) => {
             console.log(res)
-            if(!res.ok) {
-                throw Error('Could not fetch the data for that resource');
-            }
             return res.json();     
         }).then(res => {
             console.log(res)
             setValue(res.message)
-            setError(false)
-            setIsPending(false);
+            setError(res.error)
         }).catch(e => {
             console.log(e)
-            setValue('Login Gagal')
-            setError(true)
+        }).finally(() => {
             setIsPending(false);
         })
     };
@@ -75,8 +70,8 @@ const Form = () => {
                     <i onClick={togglePasswordVisiblity}>{eye}</i>
                 </div>
                 
-                {!isPending && <button>Login</button>}
-                {isPending && <button disabled>Loading...</button>}
+                {!isPending && <button disabled={username === "" || password === ""}>Login</button>}
+                {isPending && <button>Loading...</button>}
             </form>
         </div>
     )

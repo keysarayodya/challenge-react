@@ -14,42 +14,46 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <div className="form">
-          <Switch>
-            <Route exact path="/login">
-              <Form isAuth={isAuth} setAuth={setAuth} />
-            </Route>
-            <Route>
-              <ProtectedRoute path="/" component={SecondApp} isAuth={isAuth} />
-            </Route>
-          </Switch>
-        </div>
+        <Switch>
+          <Route exact path="/login">
+            <Form isAuth={isAuth} setAuth={setAuth} />
+          </Route>
+          <Route>
+            <ProtectedRoute path="/home" component={Home} isAuth={isAuth} />
+            <ProtectedRoute
+              path="/transactions"
+              component={Transactions}
+              isAuth={isAuth}
+            />
+            <ProtectedRoute path="/user" component={User} isAuth={isAuth} />
+          </Route>
+        </Switch>
+        <Route path="/book">
+          <Book />
+        </Route>
       </div>
     </Router>
   );
 }
 
-function SecondApp() {
-  return (
-    <div className="App">
-      <div className="form">
-        <Switch>
-          <Route exact path="/home">
-            <Home />
-          </Route>
-          <Route path="/transactions">
-            <Transactions />
-          </Route>
-          <Route path="/user">
-            <User />
-          </Route>
-          <Route path="/book">
-            <Book />
-          </Route>
-        </Switch>
-      </div>
-    </div>
-  );
-}
+// function SecondApp() {
+//   return (
+//     <div className="App">
+//       <div className="form">
+//         <Switch>
+//           <Route exact path="/home">
+//             <Home />
+//           </Route>
+//           <Route path="/transactions">
+//             <Transactions />
+//           </Route>
+//           <Route path="/user">
+//             <User />
+//           </Route>
+//         </Switch>
+//       </div>
+//     </div>
+//   );
+// }
 
 export default App;

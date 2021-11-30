@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { FormControl, FormLabel, Input, Button, Text } from "@chakra-ui/react";
 const eye = <FontAwesomeIcon icon={faEye} />;
 
 const Form = (props) => {
@@ -58,45 +59,108 @@ const Form = (props) => {
   return (
     <div className="form">
       {error ? (
-        <p className="value error-color">{value} </p>
+        <Text fontSize="md" color="red">
+          {value}
+        </Text>
       ) : (
-        <p className="value success-color"> {value} </p>
+        <Text fontSize="md" color="green">
+          {value}
+        </Text>
       )}
-      <h2>Login</h2>
+      <Text fontSize="xl">Login</Text>
       <form onSubmit={handleSubmit}>
-        <label>Username</label>
-        <div className="username">
-          <input
+        <FormControl isInvalid={error}>
+          <FormLabel>Username</FormLabel>
+          <Input
             type="text"
-            className={error ? "border-error" : ""}
             name="username"
             placeholder="Masukan Username"
+            errorBorderColor="red.300"
             required
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-        </div>
+        </FormControl>
 
-        <div className="password">
-          <label>Password</label>
-          <input
-            type={passwordShown ? "text" : "password"}
-            className={error ? "border-error" : ""}
-            name="password"
-            placeholder="Masukan Password"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <i onClick={togglePasswordVisiblity}>{eye}</i>
-        </div>
+        <FormControl isInvalid={error}>
+          <div className="password">
+            <FormLabel>Password</FormLabel>
+            <Input
+              type={passwordShown ? "text" : "password"}
+              name="password"
+              placeholder="Masukan Password"
+              errorBorderColor="red.300"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <i onClick={togglePasswordVisiblity}>{eye}</i>
+          </div>
+        </FormControl>
 
         {!isPending && (
-          <button disabled={username === "" || password === ""}>Login</button>
+          <Button type="submit" disabled={username === "" || password === ""}>
+            Login
+          </Button>
         )}
-        {isPending && <button>Loading...</button>}
+        {isPending && (
+          <Button
+            isLoading
+            loadingText="Loading"
+            variant="outline"
+            spinnerPlacement="start"
+          ></Button>
+        )}
       </form>
+      <div className="links">
+        <Link to="/book">Book</Link>
+      </div>
     </div>
+    // <div className="form">
+    //   {error ? (
+    //     <p className="value error-color">{value} </p>
+    //   ) : (
+    //     <p className="value success-color"> {value} </p>
+    //   )}
+    //   <h2>Login</h2>
+
+    //   <form onSubmit={handleSubmit}>
+    //     <label>Username</label>
+    //     <div className="username">
+    //       <input
+    //         type="text"
+    //         className={error ? "border-error" : ""}
+    //         name="username"
+    //         placeholder="Masukan Username"
+    //         required
+    //         value={username}
+    //         onChange={(e) => setUsername(e.target.value)}
+    //       />
+    //     </div>
+
+    //     <div className="password">
+    //       <label>Password</label>
+    //       <input
+    //         type={passwordShown ? "text" : "password"}
+    //         className={error ? "border-error" : ""}
+    //         name="password"
+    //         placeholder="Masukan Password"
+    //         required
+    //         value={password}
+    //         onChange={(e) => setPassword(e.target.value)}
+    //       />
+    //       <i onClick={togglePasswordVisiblity}>{eye}</i>
+    //     </div>
+
+    //     {!isPending && (
+    //       <button disabled={username === "" || password === ""}>Login</button>
+    //     )}
+    //     {isPending && <button>Loading...</button>}
+    //   </form>
+    //   <div className="links">
+    //     <Link to="/book">Book</Link>
+    //   </div>
+    // </div>
   );
 };
 

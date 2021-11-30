@@ -1,7 +1,13 @@
+import Navbar from "./Navbar";
+import { Text } from "@chakra-ui/react";
+
 const Book = () => {
   return (
     <div className="book">
-      <h1>Book</h1>
+      <Navbar />
+      <Text fontSize="xl" textAlign="center">
+        Book
+      </Text>
     </div>
   );
 };

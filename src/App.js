@@ -3,6 +3,7 @@ import Form from "./Form";
 import Home from "./Home";
 import User from "./User";
 import Book from "./Book";
+import Dashboard from "./Dashboard";
 import Transactions from "./Transactions";
 import ProtectedRoute from "./ProtectedRoute";
 import { useState } from "react";
@@ -30,6 +31,9 @@ function App() {
         </Switch>
         <Route path="/book">
           <Book />
+        </Route>
+        <Route path="/dashboard">
+          <Dashboard />
         </Route>
       </div>
     </Router>

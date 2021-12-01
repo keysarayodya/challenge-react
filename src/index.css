@@ -37,33 +37,33 @@
 } */
 
 /* Form */
-.form {
+/* .form {
   max-width: 400px;
   margin: 0 auto;
   text-align: center;
-}
+} */
 
-.form h2 {
+/* .form h2 {
   margin-top: 10px;
   margin-bottom: 30px;
-  /* font-size: 20px; */
+  font-size: 20px;
   text-align: left;
   font-weight: bold;
-}
+} */
 
-.form p {
+/* .form p {
   margin-top: 20px;
-  /* font-size: 14px; */
+  font-size: 14px;
   font-weight: bold;
   text-align: left;
-}
+} */
 
-.form label {
+/* .form label {
   text-align: left;
   display: block;
-}
+} */
 
-.form input {
+/* .form input {
   width: 100%;
   padding: 6px 10px;
   margin: 10px 0;
@@ -71,14 +71,14 @@
   border-radius: 3px;
   box-sizing: border-box;
   display: block;
-}
+} */
 
-.form input:focus {
+/* .form input:focus {
   outline: none;
   border: 1px solid #8f00ff;
-}
+} */
 
-.form button {
+/* .form button {
   background: #8f00ff;
   width: 100%;
   padding: 6px 10px;
@@ -94,15 +94,11 @@ button[disabled] {
   border: 1px solid rgba(255, 255, 255, 0.651);
   background-color: #6600b43a;
   color: rgba(255, 255, 255, 0.651);
-}
+} */
 
-Button:hover {
-  background-color: brown;
-}
-
-.password {
+/* .password {
   position: relative;
-}
+} */
 
 i {
   position: absolute;
@@ -127,6 +123,41 @@ i:hover {
   border: 1px solid red !important;
 } */
 
-.links a {
+/* .links a {
   text-decoration: none;
+} */
+
+.active {
+  color: white;
+}
+
+.active-icon {
+  color: purple !important;
+}
+
+.sidebar-icon {
+  color: gray;
+  font-size: large;
+}
+
+.sidebar-items {
+  color: gray;
+  /* font-size: large; */
+}
+
+.sidebar-items p {
+  margin-left: 1em;
+}
+
+.sidebar-items:hover p {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar-items:hover svg {
+  color: purple;
+}
+
+.sidebar-items:not(:last-child) {
+  margin-bottom: 1em;
 }

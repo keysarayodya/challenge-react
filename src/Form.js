@@ -2,7 +2,15 @@ import { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
-import { FormControl, FormLabel, Input, Button, Text } from "@chakra-ui/react";
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  Button,
+  Text,
+  Center,
+  Box,
+} from "@chakra-ui/react";
 const eye = <FontAwesomeIcon icon={faEye} />;
 
 const Form = (props) => {
@@ -24,30 +32,32 @@ const Form = (props) => {
 
     setIsPending(true);
 
-    fetch("http://localhost:3001/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    })
-      .then((res) => {
-        console.log(res);
-        return res.json();
+    setTimeout(() => {
+      fetch("http://localhost:3001/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
       })
-      .then((res) => {
-        console.log(res);
-        if (!res.error) {
-          props.setAuth(true);
-        } else {
-          setValue(res.message);
-          setError(res.error);
-        }
-      })
-      .catch((e) => {
-        console.log(e);
-      })
-      .finally(() => {
-        setIsPending(false);
-      });
+        .then((res) => {
+          console.log(res);
+          return res.json();
+        })
+        .then((res) => {
+          console.log(res);
+          if (!res.error) {
+            props.setAuth(true);
+          } else {
+            setValue(res.message);
+            setError(res.error);
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+        })
+        .finally(() => {
+          setIsPending(false);
+        });
+    }, 1000);
   };
 
   useEffect(() => {
@@ -57,33 +67,36 @@ const Form = (props) => {
   }, [props.isAuth]);
 
   return (
-    <div className="form">
-      {error ? (
-        <Text fontSize="md" color="red">
-          {value}
+    <Center minH="90vh">
+      <Box m={2} maxW="350px" w="100%">
+        {error ? (
+          <Text fontSize="md" color="red">
+            {value}
+          </Text>
+        ) : (
+          <Text fontSize="md" color="green">
+            {value}
+          </Text>
+        )}
+        <Text fontWeight="bold" fontSize="xl">
+          Login
         </Text>
-      ) : (
-        <Text fontSize="md" color="green">
-          {value}
-        </Text>
-      )}
-      <Text fontSize="xl">Login</Text>
-      <form onSubmit={handleSubmit}>
-        <FormControl isInvalid={error}>
-          <FormLabel>Username</FormLabel>
-          <Input
-            type="text"
-            name="username"
-            placeholder="Masukan Username"
-            errorBorderColor="red.300"
-            required
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </FormControl>
+        <form onSubmit={handleSubmit}>
+          <FormControl marginTop="2" isInvalid={error}>
+            <FormLabel>Username</FormLabel>
+            <Input
+              pos="relative"
+              type="text"
+              name="username"
+              placeholder="Masukan Username"
+              errorBorderColor="red.300"
+              required
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </FormControl>
 
-        <FormControl isInvalid={error}>
-          <div className="password">
+          <FormControl marginTop="2" isInvalid={error}>
             <FormLabel>Password</FormLabel>
             <Input
               type={passwordShown ? "text" : "password"}
@@ -95,27 +108,39 @@ const Form = (props) => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <i onClick={togglePasswordVisiblity}>{eye}</i>
-          </div>
-        </FormControl>
+          </FormControl>
 
-        {!isPending && (
-          <Button type="submit" disabled={username === "" || password === ""}>
-            Login
-          </Button>
-        )}
-        {isPending && (
-          <Button
-            isLoading
-            loadingText="Loading"
-            variant="outline"
-            spinnerPlacement="start"
-          ></Button>
-        )}
-      </form>
-      <div className="links">
-        <Link to="/book">Book</Link>
-      </div>
-    </div>
+          {!isPending && (
+            <Button
+              w="100%"
+              marginTop="2"
+              colorScheme="purple"
+              type="submit"
+              disabled={username === "" || password === ""}
+            >
+              Login
+            </Button>
+          )}
+          {isPending && (
+            <Button
+              w="100%"
+              marginTop="2"
+              isLoading
+              loadingText="Loading"
+              colorScheme="purple"
+              // variant="outline"
+              spinnerPlacement="start"
+            ></Button>
+          )}
+        </form>
+        <Center>
+          <Link to="/book">Book</Link>
+        </Center>
+        <Center>
+          <Link to="/dashboard">Dashboard</Link>
+        </Center>
+      </Box>
+    </Center>
     // <div className="form">
     //   {error ? (
     //     <p className="value error-color">{value} </p>

@@ -13,10 +13,6 @@ import {
 } from "@chakra-ui/react";
 import axious from "axios";
 
-// const api = axious.create({
-//   baseURL: "http://localhost:3001/api/login",
-// });
-
 const eye = <FontAwesomeIcon icon={faEye} />;
 
 const Form = (props) => {

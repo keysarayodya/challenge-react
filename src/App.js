@@ -1,8 +1,9 @@
 import "./index.css";
-import Form from "./Form";
+import Login from "./Login";
 import Home from "./Home";
 import User from "./User";
 import Book from "./Book";
+import FormFood from "./FormFood";
 import Dashboard from "./Dashboard";
 import Transactions from "./Transactions";
 import ProtectedRoute from "./ProtectedRoute";
@@ -17,7 +18,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/login">
-            <Form isAuth={isAuth} setAuth={setAuth} />
+            <Login isAuth={isAuth} setAuth={setAuth} />
           </Route>
           <Route>
             <ProtectedRoute path="/home" component={Home} isAuth={isAuth} />
@@ -34,6 +35,9 @@ function App() {
         </Route>
         <Route path="/dashboard">
           <Dashboard />
+        </Route>
+        <Route path="/formFood">
+          <FormFood />
         </Route>
       </div>
     </Router>

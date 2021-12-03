@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+import TableFood from "./TableFood";
 import { Link } from "react-router-dom";
 import {
   Avatar,
@@ -9,8 +11,14 @@ import {
 } from "@chakra-ui/react";
 
 import { FiHome, FiDollarSign, FiBookOpen } from "react-icons/fi";
+import axios from "axios";
 
 const Dashboard = () => {
+  const [foods, setFoods] = useState([]);
+  useEffect(() => {
+    axios.get("http://localhost:8001/foods").then((res) => setFoods(res.data));
+  }, []);
+
   return (
     <Flex h="100vh" flexDir="row" overflow="hidden" maxW="2000px">
       <Flex
@@ -31,6 +39,7 @@ const Dashboard = () => {
             >
               Dashboard.
             </Heading>
+
             <Flex flexDir="column" align="flex-start" justifyContent="center">
               <Flex className="sidebar-items">
                 <ChakraLink>
@@ -82,16 +91,23 @@ const Dashboard = () => {
           </Flex>
         </Flex>
       </Flex>
-      <Flex w="55%" p="3%" flexDir="column" overflow="auto" minH="100vh">
+
+      {/* Column 2 */}
+      <Flex w="70%" p="3%" flexDir="column" overflow="auto" minH="100vh">
         <Heading fontWeight="normal" mb={4} letterSpacing="tight">
           Welcome back,
           <Flex fontWeight="bold" display="inline-flex">
             User
           </Flex>
         </Heading>
+
+        {/* Table */}
+        <TableFood foods={foods} />
       </Flex>
+
+      {/* colum3 */}
       <Flex
-        w="35%"
+        w="20%"
         bgColor="#F5F5F5"
         p="3%"
         flexDir="column"

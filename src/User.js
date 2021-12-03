@@ -1,5 +1,5 @@
 import Navbar from "./Navbar";
-import { Text, Image, Box, Container, Heading, Center } from "@chakra-ui/react";
+import { Image, Box, Container, Heading, Center } from "@chakra-ui/react";
 
 const User = () => {
   return (

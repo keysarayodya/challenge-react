@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Flex, Spacer, Box, Heading } from "@chakra-ui/react";
+import { Spacer, Box, Heading } from "@chakra-ui/react";
 
 const Navbar = () => {
   return (
@@ -25,16 +25,6 @@ const Navbar = () => {
         <Link to="/user">User</Link>
       </Box>
     </Box>
-
-    // <nav className="navbar">
-    //   <Link to="/home">
-    //     <h1>Challenge</h1>
-    //   </Link>
-    //   <div className="links">
-    //     <Link to="/transactions">Transactions</Link>
-    //     <Link to="/user">User</Link>
-    //   </div>
-    // </nav>
   );
 };
 

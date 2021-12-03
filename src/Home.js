@@ -1,12 +1,5 @@
 import Navbar from "./Navbar";
-import {
-  Text,
-  Box,
-  Container,
-  Heading,
-  Image,
-  AspectRatio,
-} from "@chakra-ui/react";
+import { Box, Container, Heading, AspectRatio } from "@chakra-ui/react";
 
 const Home = () => {
   return (

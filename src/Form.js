@@ -11,6 +11,12 @@ import {
   Center,
   Box,
 } from "@chakra-ui/react";
+import axious from "axios";
+
+// const api = axious.create({
+//   baseURL: "http://localhost:3001/api/login",
+// });
+
 const eye = <FontAwesomeIcon icon={faEye} />;
 
 const Form = (props) => {
@@ -33,31 +39,20 @@ const Form = (props) => {
     setIsPending(true);
 
     setTimeout(() => {
-      fetch("http://localhost:3001/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      })
+      axious
+        .post("http://localhost:3001/api/login", form)
         .then((res) => {
-          console.log(res);
-          return res.json();
+          console.log(res.data);
+          props.setAuth(true);
         })
-        .then((res) => {
-          console.log(res);
-          if (!res.error) {
-            props.setAuth(true);
-          } else {
-            setValue(res.message);
-            setError(res.error);
-          }
-        })
-        .catch((e) => {
-          console.log(e);
+        .catch((err) => {
+          setValue(err.response.data.message);
+          setError(err.response.data.error);
         })
         .finally(() => {
           setIsPending(false);
         });
-    }, 1000);
+    }, 500);
   };
 
   useEffect(() => {
@@ -128,7 +123,6 @@ const Form = (props) => {
               isLoading
               loadingText="Loading"
               colorScheme="purple"
-              // variant="outline"
               spinnerPlacement="start"
             ></Button>
           )}
@@ -141,51 +135,6 @@ const Form = (props) => {
         </Center>
       </Box>
     </Center>
-    // <div className="form">
-    //   {error ? (
-    //     <p className="value error-color">{value} </p>
-    //   ) : (
-    //     <p className="value success-color"> {value} </p>
-    //   )}
-    //   <h2>Login</h2>
-
-    //   <form onSubmit={handleSubmit}>
-    //     <label>Username</label>
-    //     <div className="username">
-    //       <input
-    //         type="text"
-    //         className={error ? "border-error" : ""}
-    //         name="username"
-    //         placeholder="Masukan Username"
-    //         required
-    //         value={username}
-    //         onChange={(e) => setUsername(e.target.value)}
-    //       />
-    //     </div>
-
-    //     <div className="password">
-    //       <label>Password</label>
-    //       <input
-    //         type={passwordShown ? "text" : "password"}
-    //         className={error ? "border-error" : ""}
-    //         name="password"
-    //         placeholder="Masukan Password"
-    //         required
-    //         value={password}
-    //         onChange={(e) => setPassword(e.target.value)}
-    //       />
-    //       <i onClick={togglePasswordVisiblity}>{eye}</i>
-    //     </div>
-
-    //     {!isPending && (
-    //       <button disabled={username === "" || password === ""}>Login</button>
-    //     )}
-    //     {isPending && <button>Loading...</button>}
-    //   </form>
-    //   <div className="links">
-    //     <Link to="/book">Book</Link>
-    //   </div>
-    // </div>
   );
 };
 

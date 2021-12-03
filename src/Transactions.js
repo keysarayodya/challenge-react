@@ -1,5 +1,5 @@
 import Navbar from "./Navbar";
-import { Text, Box, Container, Heading, Image } from "@chakra-ui/react";
+import { Box, Container, Heading, Image } from "@chakra-ui/react";
 
 const Transactions = () => {
   return (

@@ -4,101 +4,8 @@
   margin: 0;
   padding: 0;
   font-family: "Quicksand";
-  /* color: black; */
   box-sizing: border-box;
 }
-
-/* .navbar {
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  max-width: 600px;
-  margin: 0 auto;
-  border-bottom: 1px solid #f2f2f2;
-}
-
-.navbar h1 {
-  color: #8f00ff;
-  font-weight: bold;
-}
-
-.navbar .links {
-  margin-left: auto;
-}
-
-.navbar a {
-  margin-left: 16px;
-  text-decoration: none;
-  padding: 6px;
-}
-
-.navbar a:hover {
-  color: #8f00ff;
-} */
-
-/* Form */
-/* .form {
-  max-width: 400px;
-  margin: 0 auto;
-  text-align: center;
-} */
-
-/* .form h2 {
-  margin-top: 10px;
-  margin-bottom: 30px;
-  font-size: 20px;
-  text-align: left;
-  font-weight: bold;
-} */
-
-/* .form p {
-  margin-top: 20px;
-  font-size: 14px;
-  font-weight: bold;
-  text-align: left;
-} */
-
-/* .form label {
-  text-align: left;
-  display: block;
-} */
-
-/* .form input {
-  width: 100%;
-  padding: 6px 10px;
-  margin: 10px 0;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  box-sizing: border-box;
-  display: block;
-} */
-
-/* .form input:focus {
-  outline: none;
-  border: 1px solid #8f00ff;
-} */
-
-/* .form button {
-  background: #8f00ff;
-  width: 100%;
-  padding: 6px 10px;
-  margin: 10px 0;
-  color: #fff;
-  border: 0;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-button:disabled,
-button[disabled] {
-  border: 1px solid rgba(255, 255, 255, 0.651);
-  background-color: #6600b43a;
-  color: rgba(255, 255, 255, 0.651);
-} */
-
-/* .password {
-  position: relative;
-} */
 
 i {
   position: absolute;
@@ -110,22 +17,6 @@ i:hover {
   color: #8f00ff;
   cursor: pointer;
 }
-
-/* .error-color {
-  color: red;
-}
-
-.success-color {
-  color: green;
-} */
-
-/* .border-error {
-  border: 1px solid red !important;
-} */
-
-/* .links a {
-  text-decoration: none;
-} */
 
 .active {
   color: white;

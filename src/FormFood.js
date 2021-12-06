@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import {
   FormControl,
   FormLabel,
   Input,
   Button,
-  Text,
   Center,
   Box,
 } from "@chakra-ui/react";
@@ -17,7 +16,7 @@ const FormFood = () => {
   const [food, setFood] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,7 +28,7 @@ const FormFood = () => {
       .post("http://localhost:8001/foods", form)
       .then((res) => {
         console.log(res.data);
-        history.push("/dashboard");
+        navigate("/dashboard");
       })
       .catch((err) => {
         console.log(err.data);

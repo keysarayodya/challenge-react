@@ -1,22 +1,11 @@
-import { Route, Redirect } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
-const ProtectedRoute = ({ isAuth: isAuth, component: Component, ...rest }) => {
-  return (
-    <Route
-      {...rest}
-      render={(props) => {
-        if (isAuth) {
-          return <Component />;
-        } else {
-          return (
-            <Redirect
-              to={{ pathname: "/login", state: { from: props.location } }}
-            />
-          );
-        }
-      }}
-    />
-  );
+const ProtectedRoute = ({ isAuth, children }) => {
+  let location = useLocation();
+
+  if (!isAuth) return <Navigate to="/login" state={{ from: location }} />;
+
+  return children;
 };
 
 export default ProtectedRoute;

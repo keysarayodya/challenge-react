@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -22,7 +22,7 @@ const Form = (props) => {
   const [passwordShown, setPasswordShown] = useState(false);
   const [error, setError] = useState(null);
   const [value, setValue] = useState("");
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
@@ -53,7 +53,7 @@ const Form = (props) => {
 
   useEffect(() => {
     if (props.isAuth) {
-      history.push("/home");
+      navigate("/home");
     }
   }, [props.isAuth]);
 

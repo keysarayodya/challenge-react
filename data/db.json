@@ -1,40 +1,16 @@
 {
   "foods": [
     {
-      "id": 1,
-      "food": "Rendang",
-      "description": "Deskripsi Rendang",
-      "price": "Rp 15000"
-    },
-    {
-      "id": 2,
-      "food": "Tempe",
-      "description": "Deskripsi Tempe",
-      "price": "Rp 1000"
-    },
-    {
       "food": "Tongkol",
       "description": "Deskripsi",
-      "price": "Rp 5000",
-      "id": 3
+      "price": "Rp 20000",
+      "id": 1
     },
     {
-      "food": "asdas",
-      "description": "dasdasd",
-      "price": "asdas",
-      "id": 4
-    },
-    {
-      "food": "saf",
-      "description": "dasdasd",
-      "price": "asdas",
-      "id": 5
-    },
-    {
-      "food": "asdas",
-      "description": "dasdasd",
-      "price": "asdas",
-      "id": 6
+      "food": "Ayam",
+      "description": "Ayam Gulai",
+      "price": "Rp 20000",
+      "id": 2
     }
   ]
 }

@@ -23,7 +23,7 @@ i:hover {
 }
 
 .active-icon {
-  color: purple !important;
+  color: white !important;
 }
 
 .sidebar-icon {
@@ -46,7 +46,7 @@ i:hover {
 }
 
 .sidebar-items:hover svg {
-  color: purple;
+  color: white;
 }
 
 .sidebar-items:not(:last-child) {

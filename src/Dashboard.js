@@ -47,13 +47,14 @@ const Dashboard = () => {
                     <Icon
                       as={FiHome}
                       fontSize="2xl"
-                      className="active-icon"
+                      // className="active-icon"
                     ></Icon>
                   </Link>
                 </ChakraLink>
                 <ChakraLink _hover={{ textDecor: "none" }}>
                   <Link to="/home">
-                    <Text className="active">Home</Text>
+                    {/* <Text className="active">Home</Text> */}
+                    <Text>Home</Text>
                   </Link>
                 </ChakraLink>
               </Flex>
@@ -93,7 +94,7 @@ const Dashboard = () => {
       </Flex>
 
       {/* Column 2 */}
-      <Flex w="70%" p="3%" flexDir="column" overflow="auto" minH="100vh">
+      <Flex w="100%" p="3%" flexDir="column" overflow="auto" minH="100vh">
         <Heading fontWeight="normal" mb={4} letterSpacing="tight">
           Welcome back,
           <Flex fontWeight="bold" display="inline-flex">
@@ -106,13 +107,13 @@ const Dashboard = () => {
       </Flex>
 
       {/* colum3 */}
-      <Flex
+      {/* <Flex
         w="20%"
         bgColor="#F5F5F5"
         p="3%"
         flexDir="column"
         overflow="auto"
-      ></Flex>
+      ></Flex> */}
     </Flex>
   );
 };

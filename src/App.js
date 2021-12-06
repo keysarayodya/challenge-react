@@ -7,61 +7,59 @@ import FormFood from "./FormFood";
 import Dashboard from "./Dashboard";
 import Transactions from "./Transactions";
 import ProtectedRoute from "./ProtectedRoute";
-import { useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import EditForm from "./EditForm";
+import axios from "axios";
 
 function App() {
   const [isAuth, setAuth] = useState(false);
+  const [foods, setFoods] = useState([]);
+  useEffect(() => {
+    axios.get("http://localhost:8001/foods").then((res) => setFoods(res.data));
+  }, []);
 
   return (
     <Router>
       <div className="App">
-        <Switch>
-          <Route exact path="/login">
-            <Login isAuth={isAuth} setAuth={setAuth} />
-          </Route>
-          <Route>
-            <ProtectedRoute path="/home" component={Home} isAuth={isAuth} />
-            <ProtectedRoute
-              path="/transactions"
-              component={Transactions}
-              isAuth={isAuth}
-            />
-            <ProtectedRoute path="/user" component={User} isAuth={isAuth} />
-          </Route>
-        </Switch>
-        <Route path="/book">
-          <Book />
-        </Route>
-        <Route path="/dashboard">
-          <Dashboard />
-        </Route>
-        <Route path="/formFood">
-          <FormFood />
-        </Route>
+        <Routes>
+          <Route
+            path="/login"
+            element={<Login isAuth={isAuth} setAuth={setAuth} />}
+          />
+          <Route
+            path="/home"
+            element={
+              <ProtectedRoute isAuth={isAuth}>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/transactions"
+            element={
+              <ProtectedRoute isAuth={isAuth}>
+                <Transactions />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/user"
+            element={
+              <ProtectedRoute isAuth={isAuth}>
+                <User />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route path="/book" element={<Book />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/formFood" element={<FormFood />} />
+          <Route path="/editForm" element={<EditForm foods={foods} />} />
+        </Routes>
       </div>
     </Router>
   );
 }
-
-// function SecondApp() {
-//   return (
-//     <div className="App">
-//       <div className="form">
-//         <Switch>
-//           <Route exact path="/home">
-//             <Home />
-//           </Route>
-//           <Route path="/transactions">
-//             <Transactions />
-//           </Route>
-//           <Route path="/user">
-//             <User />
-//           </Route>
-//         </Switch>
-//       </div>
-//     </div>
-//   );
-// }
 
 export default App;
